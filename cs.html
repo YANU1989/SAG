@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sumber Amanah Global - Solusi Layanan Kebersihan Profesional</title>
+    <!-- Memuat Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Memuat Font Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Menggunakan font Inter sebagai default */
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      /* Style kustom untuk dot carousel */
+      .carousel-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #d1d5db; /* gray-300 */
+        transition: background-color 0.3s ease;
+      }
+      .carousel-dot.active {
+        background-color: #3b82f6; /* blue-500 */
+      }
+      /* Style untuk overlay teks pada gambar layanan */
+      .service-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 0.5rem; /* rounded-lg */
+      }
+      .service-card img {
+        transition: transform 0.3s ease;
+      }
+      .service-card:hover img {
+        transform: scale(1.05);
+      }
+      .service-card-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.7),
+          rgba(0, 0, 0, 0)
+        );
+        padding: 1rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .service-card:hover .service-card-overlay {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-800">
+    <!-- Navigasi Header -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Tinggi nav-bar diubah dari h-16 menjadi h-20 -->
+        <div class="flex justify-between items-center h-20">
+          <!-- Logo -->
+          <a href="index.html">
+            <div class="flex-shrink-0 flex items-center">
+              <!-- Ukuran logo diubah dari h-14 menjadi h-16, dan src diperbaiki -->
+              <img class="h-20 w-full" src="logo.png" alt="Logo Perusahaan" />
+            </div>
+          </a>
+
+          <!-- Link Navigasi (Desktop) -->
+          <div class="hidden md:flex md:items-center md:space-x-8">
+            <a
+              href="profile.html"
+              class="text-gray-600 hover:text-blue-600 font-medium"
+              >Tentang</a
+            >
+            <div class="relative group">
+              <a
+                href="#"
+                class="text-gray-600 hover:text-blue-600 font-medium cursor-pointer inline-flex items-center p-2"
+              >
+                Layanan
+              </a>
+
+              <div class="absolute hidden group-hover:block w-48 z-10">
+                <div class="pt-2">
+                  <div
+                    class="bg-white border border-gray-200 rounded-md shadow-lg"
+                  >
+                    <a
+                      href="cs.html"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-500 hover:text-white transition-colors duration-150"
+                    >
+                      Cleaning Service
+                    </a>
+                    <a
+                      href="sec.html"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-500 hover:text-white transition-colors duration-150"
+                    >
+                      Security Service
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tinggi nav-bar diubah dari h-16 menjadi h-20 <a href="#" class="text-gray-600 hover:text-blue-600 font-medium"
+              >Karir</a>-->
+
+            <a
+              href="galery.html"
+              class="text-gray-600 hover:text-blue-600 font-medium"
+              >Galery</a
+            >
+            <a
+              href="kontak.html"
+              class="text-gray-600 hover:text-blue-600 font-medium"
+              >Kontak</a
+            >
+          </div>
+
+          <!-- Ikon Pencarian & Tombol Menu (Mobile) -->
+          <div class="flex items-center">
+            <!-- Tombol Hamburger (Mobile) -->
+            <div class="md:hidden">
+              <button
+                id="mobile-menu-button"
+                class="text-gray-500 hover:text-gray-700"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h16m-7 6h7"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu Mobile (Tampil/Sembunyi) -->
+      <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+        <a
+          href="profile.html"
+          class="block px-4 py-3 text-gray-600 hover:bg-gray-100 font-medium"
+          >Tentang</a
+        >
+        <a
+          href="#"
+          class="block px-4 py-3 text-gray-600 hover:bg-gray-100 font-medium"
+          >Layanan & Produk</a
+        >
+        <a
+          href="#"
+          class="block px-4 py-3 text-gray-600 hover:bg-gray-100 font-medium"
+          >Karir</a
+        >
+        <a
+          href="#"
+          class="block px-4 py-3 text-gray-600 hover:bg-gray-100 font-medium"
+          >Artikel</a
+        >
+        <a
+          href="#"
+          class="block px-4 py-3 text-gray-600 hover:bg-gray-100 font-medium"
+          >Insight</a
+        >
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative bg-gray-100">
+      <!-- Gambar Banner -->
+      <div class="w-full h-[h-full] md:h-[550px] bg-gray-300">
+        <img
+          src="banner/cs.png"
+          alt="SAG General Cleaning"
+          class="w-full h-full object-center"
+        />
+      </div>
+
+      <!-- Konten Teks Hero -->
+      <div
+        class="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-center items-start p-4 md:p-16 lg:p-24"
+      ></div>
+
+      <!-- Dots Carousel -->
+      <div
+        class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2"
+        id="carousel-dots"
+      >
+        <button class="carousel-dot active" data-slide="0"></button>
+        <button class="carousel-dot" data-slide="1"></button>
+        <button class="carousel-dot" data-slide="2"></button>
+        <button class="carousel-dot" data-slide="3"></button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Budaya Kerja Section -->
+      <section class="py-16 lg:py-24 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-12">
+            <div class="md:order-1 order-2">
+              <h2
+                class="text-3xl font-bold text-blue-600 mb-4 md:text-left text-center"
+              >
+                Regular Cleaning Service
+              </h2>
+              <p class="text-2xl text-gray-600 md:text-left text-center">
+                Layanan kebersihan Bilss didukung oleh cleaner terlatih yang
+                bertugas merawat dan menjaga kebersihan serta kerapihan
+                lingkungan kerja anda. Cleaner Bilss adalah bagian integral dari
+                tim pembersihan dan memiliki peran penting dalam memastikan area
+                yang kami tangani tetap bersih, rapi, dan bebas dari kotoran
+                atau sampah.
+              </p>
+            </div>
+
+            <div class="md:order-2 order-1 flex justify-center">
+              <img
+                src="/galery/i.jpeg"
+                alt="Keamanan Terpercaya"
+                class="w-full max-w-lg rounded-lg shadow-xl"
+              />
+            </div>
+          </div>
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center mb-12"
+          >
+            <div class="md:order-2 order-2">
+              <p class="text-2xl text-gray-600 md:text-left text-center">
+                Cleaner SAG telah dibekali pengetahuan dan keterampilan dalam
+                berbagai teknik pembersihan, termasuk penggunaan mesin,
+                peralatan dan kimia pembersih yang sesuai. Dalam melaksanakan
+                tugas, cleaner Bilss juga sudah terlatih untuk selalu memiliki
+                sikap ramah, profesional, dan mampu bekerja sama dengan orang
+                lain.
+              </p>
+            </div>
+
+            <div class="md:order-1 order-1 flex justify-center">
+              <img
+                src="/galery/j.jpeg"
+                alt="Keamanan Terpercaya"
+                class="w-full max-w-lg rounded-lg shadow-xl"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Pilar 1 -->
+            <div class="text-center p-6">
+              <div
+                class="flex items-center justify-center h-20 w-20 rounded-full bg-blue-100 mx-auto mb-6"
+              >
+                <!-- Icon Placeholder -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-10 w-10 text-blue-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 20h5v-2a3 3 0 00-5.356-2.13l-2.114 2.114a3 3 0 002.13 5.356V20zM7 20v-2a3 3 0 00-5.356-2.13l-2.114 2.114a3 3 0 002.13 5.356V20zM12 11a3 3 0 100-6 3 3 0 000 6zM15 13a3 3 0 100-6 3 3 0 000 6zM9 13a3 3 0 100-6 3 3 0 000 6z"
+                  />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                Build the Best Team
+              </h3>
+              <p class="text-gray-600">
+                dengan SDM yang kompeten dengan Standar Kompetensi Kerja
+                Nasional Indonesia (SKKNI).
+              </p>
+            </div>
+            <!-- Pilar 2 -->
+            <div class="text-center p-6">
+              <div
+                class="flex items-center justify-center h-20 w-20 rounded-full bg-blue-100 mx-auto mb-6"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-10 w-10 text-blue-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                  />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                Improvement
+              </h3>
+              <p class="text-gray-600">
+                Selalu berinovasi dan memberikan yang terbaik dalam setiap
+                pekerjaan.
+              </p>
+            </div>
+            <!-- Pilar 3 -->
+            <div class="text-center p-6">
+              <div
+                class="flex items-center justify-center h-20 w-20 rounded-full bg-blue-100 mx-auto mb-6"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-10 w-10 text-blue-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2-1.343-2-3-2zM4 6h16M4 10h16M4 14h16M4 18h16"
+                  />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                Transparency
+              </h3>
+              <p class="text-gray-600">
+                Mengedepankan kejujuran, disiplin, dan bertanggung jawab.
+              </p>
+            </div>
+            <!-- Pilar 4 -->
+            <div class="text-center p-6">
+              <div
+                class="flex items-center justify-center h-20 w-20 rounded-full bg-blue-100 mx-auto mb-6"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-10 w-10 text-blue-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                  />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                Service Oriented
+              </h3>
+              <p class="text-gray-600">
+                Pengutamaan pelayanan yang efektif dan efisien sesuai kebutuhan
+                pelanggan.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Layanan Kami Section -->
+      <section class="py-16 lg:py-24 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-blue-600 mb-4">Layanan Kami</h2>
+          </div>
+          <!-- START: Modifikasi di sini untuk membuat kartu berada di tengah -->
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 max-w-4xl mx-auto justify-items-center"
+          >
+            <!-- Service 1 -->
+            <div class="flex justify-center lg:col-span-2">
+              <!-- Menggunakan 2 kolom di desktop -->
+              <div class="service-card shadow-lg w-full">
+                <!-- Lebar penuh di container kolomnya -->
+                <img
+                  src="cs1.png"
+                  alt="Cleaning Service"
+                  class="w-full h-64 object-cover"
+                />
+                <div class="service-card-overlay">
+                  <h4 class="text-xl font-semibold text-white">
+                    Cleaning Service
+                  </h4>
+                </div>
+              </div>
+            </div>
+            <!-- Service 2 -->
+            <div class="flex justify-center lg:col-span-2">
+              <!-- Menggunakan 2 kolom di desktop -->
+              <div class="service-card shadow-lg w-full">
+                <!-- Lebar penuh di container kolomnya -->
+                <img
+                  src="sec1.png"
+                  alt="Security Service"
+                  class="w-full h-64 object-cover"
+                />
+                <div class="service-card-overlay">
+                  <h4 class="text-xl font-semibold text-white">
+                    Security Service
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END: Modifikasi di sini untuk membuat kartu berada di tengah -->
+        </div>
+      </section>
+
+      <!-- Kenapa Memilih Bilss? Section -->
+      <section class="py-16 lg:py-24 bg-blue-700 text-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold mb-2">Kenapa Harus Memilih SAG?</h2>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+            <!-- Keunggulan 1 -->
+            <div class="text-center p-4">
+              <div
+                class="flex items-center justify-center h-16 w-16 rounded-full border-2 border-white mx-auto mb-4"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-8 w-8"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <h3 class="font-semibold text-center">
+                Tenaga Kerja Berlisensi Tinggi
+              </h3>
+            </div>
+            <!-- Keunggulan 2 -->
+            <div class="text-center p-4">
+              <div
+                class="flex items-center justify-center h-16 w-16 rounded-full border-2 border-white mx-auto mb-4"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-8 w-8"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <h3 class="font-semibold text-center">
+                Pemanfaatan Teknologi Terkini
+              </h3>
+            </div>
+            <!-- Keunggulan 3 -->
+            <div class="text-center p-4">
+              <div
+                class="flex items-center justify-center h-16 w-16 rounded-full border-2 border-white mx-auto mb-4"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-8 w-8"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
+                  />
+                </svg>
+              </div>
+              <h3 class="font-semibold text-center">Supervisi Area 24 Jam</h3>
+            </div>
+            <!-- Keunggulan 4 -->
+            <div class="text-center p-4">
+              <div
+                class="flex items-center justify-center h-16 w-16 rounded-full border-2 border-white mx-auto mb-4"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-8 w-8"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12 12 0 0012 21.694a12 12 0 008.618-3.04A11.955 11.955 0 0112 2.944z"
+                  />
+                </svg>
+              </div>
+              <h3 class="font-semibold text-center">Prosedur Keamanan Kerja</h3>
+            </div>
+            <!-- Keunggulan 5 -->
+            <div class="text-center p-4">
+              <div
+                class="flex items-center justify-center h-16 w-16 rounded-full border-2 border-white mx-auto mb-4"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-8 w-8"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.096 2.572-1.065z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+              </div>
+              <h3 class="font-semibold text-center">
+                Penggunaan Alat & Material Tepat
+              </h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Industri Section -->
+      <section class="py-16 lg:py-24 bg-blue-800 text-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold mb-2">Industri</h2>
+            <p class="text-lg text-blue-100 max-w-3xl mx-auto">
+              Berbagai industri yang SAG layani.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+            <!-- Industri 1 -->
+            <div class="text-center p-4">
+              <div
+                class="flex items-center justify-center h-20 w-20 rounded-lg bg-blue-700 mx-auto mb-4"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-10 w-10"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-5 0H5m14 0v-2a2 2 0 00-2-2H7a2 2 0 00-2 2v2m14 0h-5"
+                  />
+                </svg>
+              </div>
+              <h3 class="font-semibold text-center">Perkantoran</h3>
+            </div>
+            <!-- Industri 2 -->
+            <div class="text-center p-4">
+              <div
+                class="flex items-center justify-center h-20 w-20 rounded-lg bg-blue-700 mx-auto mb-4"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-10 w-10"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+                  />
+                </svg>
+              </div>
+              <h3 class="font-semibold text-center">Kesehatan</h3>
+            </div>
+            <!-- Industri 3 -->
+            <div class="text-center p-4">
+              <div
+                class="flex items-center justify-center h-20 w-20 rounded-lg bg-blue-700 mx-auto mb-4"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-10 w-10"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 4v16h16V4H4zm8 12H8v-4h4v4zm0-6H8V6h4v4zm6 6h-4v-4h4v4zm0-6h-4V6h4v4z"
+                  />
+                </svg>
+              </div>
+              <h3 class="font-semibold text-center">Pabrik</h3>
+            </div>
+            <!-- Industri 4 -->
+            <div class="text-center p-4">
+              <div
+                class="flex items-center justify-center h-20 w-20 rounded-lg bg-blue-700 mx-auto mb-4"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-10 w-10"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 11H5m14 0a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h4a2 2 0 012 2v2m0 0h2"
+                  />
+                </svg>
+              </div>
+              <h3 class="font-semibold text-center">Pendidikan</h3>
+            </div>
+            <!-- Industri 5 -->
+            <div class="text-center p-4">
+              <div
+                class="flex items-center justify-center h-20 w-20 rounded-lg bg-blue-700 mx-auto mb-4"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-10 w-10"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                  />
+                </svg>
+              </div>
+              <h3 class="font-semibold text-center">Mall</h3>
+            </div>
+            <!-- Industri 6 -->
+            <div class="text-center p-4">
+              <div
+                class="flex items-center justify-center h-20 w-20 rounded-lg bg-blue-700 mx-auto mb-4"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-10 w-10"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                  />
+                </svg>
+              </div>
+              <h3 class="font-semibold text-center">Retail</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 pt-16 pb-8">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <!-- Kolom 1: Logo & Alamat -->
+          <div>
+            <!-- Logo di footer juga bisa diganti jika diinginkan, tapi saya biarkan dulu -->
+            <span class="font-bold text-3xl text-white mb-4 block"
+              >Sumber Amanah Global</span
+            >
+            <div class="flex space-x-4 mb-4">
+              <a href="#" class="text-gray-400 hover:text-white"
+                ><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                  ...
+                </svg></a
+              ><!-- FB -->
+              <a href="#" class="text-gray-400 hover:text-white"
+                ><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                  ...
+                </svg></a
+              ><!-- IG -->
+              <a href="#" class="text-gray-400 hover:text-white"
+                ><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                  ...
+                </svg></a
+              ><!-- LinkedIn -->
+            </div>
+            <p class="text-sm">
+              Sumber Amanah Global adalah penyedia jasa Kebersihan dan Keamanan
+            </p>
+            <p class="text-sm mt-2">
+              LINGKUNGAN MANIS, Desa/Kelurahan Sumber, Kec. Sumber, Kab.
+              Cirebon, Provinsi Jawa Barat, Kode Pos: 45611
+            </p>
+            <p class="text-sm mt-1">sumberamanahglobal@gmail.com</p>
+          </div>
+
+          <!-- Kolom 2: Tentang Kami -->
+          <div>
+            <h5 class="font-semibold text-white text-3xl text-center mb-4">
+              Tentang Kami
+            </h5>
+            <ul class="space-y-2 text-2x1 text-center text-lg">
+              <li>
+                <a href="profile.html" class="hover:text-white">Tentang</a>
+              </li>
+              <li><a href="#" class="hover:text-white">Visi & Misi</a></li>
+              <!-- Tinggi nav-bar diubah dari h-16 menjadi h-20         <li><a href="#" class="hover:text-white">Karir</a></li>-->
+            </ul>
+          </div>
+
+          <!-- Kolom 4: Layanan -->
+          <div>
+            <h5 class="font-semibold text-white text-3xl text-center mb-4">
+              Layanan
+            </h5>
+            <ul class="space-y-2 text-2x1 text-center text-lg">
+              <li>
+                <a href="cs.html" class="hover:text-white">Cleaning Service</a>
+              </li>
+              <li>
+                <a href="sec.html" class="hover:text-white">Security Service</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="border-t border-gray-700 pt-8 text-center">
+          <p class="text-sm text-gray-500">
+            &copy; Copyright 2025 PT Sumber Amanah Global. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript untuk Menu Mobile & Carousel -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Logika Menu Mobile
+        const menuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        menuButton.addEventListener("click", function () {
+          mobileMenu.classList.toggle("hidden");
+        });
+
+        // Logika Sederhana Dots Carousel
+        const dotsContainer = document.getElementById("carousel-dots");
+        const dots = dotsContainer.querySelectorAll(".carousel-dot");
+
+        dotsContainer.addEventListener("click", function (e) {
+          if (e.target.classList.contains("carousel-dot")) {
+            // Hapus 'active' dari semua dots
+            dots.forEach((dot) => dot.classList.remove("active"));
+            // Tambah 'active' ke dot yang diklik
+            e.target.classList.add("active");
+
+            // Di aplikasi nyata, di sini Anda akan memindahkan slide carousel
+            // const slideIndex = e.target.getAttribute('data-slide');
+            // console.log('Pindah ke slide:', slideIndex);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
