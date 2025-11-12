@@ -69,46 +69,61 @@
           <!-- Logo -->
           <div class="flex-shrink-0 flex items-center">
             <!-- Ukuran logo diubah dari h-14 menjadi h-16, dan src diperbaiki -->
-            <img class="h-20 w-full" src="logo.png" alt="Logo Perusahaan" />
+            <a href="index.html">
+              <img class="h-20 w-full" src="logo.png" alt="Logo Perusahaan" />
+            </a>
           </div>
 
           <!-- Link Navigasi (Desktop) -->
           <div class="hidden md:flex md:items-center md:space-x-8">
-            <a href="#" class="text-gray-600 hover:text-blue-600 font-medium"
+            <a
+              href="profile.html"
+              class="text-gray-600 hover:text-blue-600 font-medium"
               >Tentang</a
             >
-            <a href="#" class="text-gray-600 hover:text-blue-600 font-medium"
-              >Layanan
-            </a>
+            <div class="relative group">
+              <a
+                href="#"
+                class="text-gray-600 hover:text-blue-600 font-medium cursor-pointer inline-flex items-center p-2"
+              >
+                Layanan
+              </a>
+
+              <div class="absolute hidden group-hover:block w-48 z-10">
+                <div class="pt-2">
+                  <div
+                    class="bg-white border border-gray-200 rounded-md shadow-lg"
+                  >
+                    <a
+                      href="cs.html"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-500 hover:text-white transition-colors duration-150"
+                    >
+                      Cleaning Service
+                    </a>
+                    <a
+                      href="sec.html"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-500 hover:text-white transition-colors duration-150"
+                    >
+                      Security Service
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
             <!-- Tinggi nav-bar diubah dari h-16 menjadi h-20 <a href="#" class="text-gray-600 hover:text-blue-600 font-medium"
               >Karir</a>-->
 
-            <a href="#" class="text-gray-600 hover:text-blue-600 font-medium"
+            <a href="galery.html" class="text-gray-600 hover:text-blue-600 font-medium"
               >Galery</a
             >
-            <a href="#" class="text-gray-600 hover:text-blue-600 font-medium"
+            <a href="kontak.html" class="text-gray-600 hover:text-blue-600 font-medium"
               >Kontak</a
             >
           </div>
 
           <!-- Ikon Pencarian & Tombol Menu (Mobile) -->
           <div class="flex items-center">
-            <button class="text-gray-500 hover:text-gray-700 mr-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-            </button>
+            
             <!-- Tombol Hamburger (Mobile) -->
             <div class="md:hidden">
               <button
@@ -138,7 +153,7 @@
       <!-- Menu Mobile (Tampil/Sembunyi) -->
       <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
         <a
-          href="#"
+          href="profile.html"
           class="block px-4 py-3 text-gray-600 hover:bg-gray-100 font-medium"
           >Tentang</a
         >
@@ -708,7 +723,7 @@
               Tentang Kami
             </h5>
             <ul class="space-y-2 text-2x1 text-center text-lg">
-              <li><a href="#" class="hover:text-white">Tentang</a></li>
+              <li><a href="profile.html" class="hover:text-white">Tentang</a></li>
               <li><a href="#" class="hover:text-white">Visi & Misi</a></li>
               <!-- Tinggi nav-bar diubah dari h-16 menjadi h-20         <li><a href="#" class="hover:text-white">Karir</a></li>-->
             </ul>
@@ -720,8 +735,8 @@
               Layanan
             </h5>
             <ul class="space-y-2 text-2x1 text-center text-lg">
-              <li><a href="#" class="hover:text-white">Cleaning Service</a></li>
-              <li><a href="#" class="hover:text-white">Security Service</a></li>
+              <li><a href="cs.html" class="hover:text-white">Cleaning Service</a></li>
+              <li><a href="sec.html" class="hover:text-white">Security Service</a></li>
             </ul>
           </div>
         </div>
