@@ -198,29 +198,40 @@
     <!-- Hero Section -->
     <header class="relative bg-gray-100">
       <!-- Gambar Banner -->
-      <div class="w-full h-[300px] md:h-[500px] bg-gray-300">
-        <img
-          src="SAG.png"
-          alt="SAG General Cleaning"
-          class="w-full h-full object-cover"
-        />
-      </div>
+      <div class="swiper w-full h-full md:h-[1000px]">
+  <div class="swiper-wrapper">
+    
+    <div class="swiper-slide">
+      <img
+        src="SAG.png"
+        alt="SAG General Cleaning 1"
+        class="w-full h-full object-cover"
+      />
+    </div>
 
-      <!-- Konten Teks Hero -->
-      <div
-        class="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-center items-start p-4 md:p-16 lg:p-24"
-      >
-        <div class="flex items-center space-x-4 mb-4">
-          <span class="font-bold text-3xl text-white">SAG</span>
-          <span class="text-white text-2xl">&times;</span>
-          <!-- Konten Teks Hero     <span class="font-bold text-2xl text-white">Modernvet</span>-->
-        </div>
-        <h1
-          class="text-2xl md:text-4xl lg:text-5xl font-bold text-white max-w-2xl leading-tight"
-        >
-          SAG Tangani General Cleaning Sempurna
-        </h1>
-      </div>
+    <div class="swiper-slide">
+      <img
+        src="/banner/kontak.png"
+        alt="Layanan Kami"
+        class="w-full h-full object-cover"
+      />
+    </div>
+
+    <div class="swiper-slide">
+      <img
+        src="/banner/gallery.png"
+        alt="Promo Spesial"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+  </div>
+
+  <div class="swiper-button-prev text-white"></div>
+  <div class="swiper-button-next text-white"></div>
+
+  <div class="swiper-pagination"></div>
+</div>
 
       <!-- Dots Carousel -->
       <div
@@ -794,7 +805,22 @@
         });
       });
     </script>
+      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      const swiper = new Swiper('.swiper', {
+        loop: true,
+        pagination: {
+          el: '.swiper-pagination',
+        },
+        // Pastikan bagian ini ada!
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    </script>
   </body>
 </html>
+
 
 
