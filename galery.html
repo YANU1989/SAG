@@ -65,6 +65,10 @@
         padding-bottom: 66.6667%; /* 4/6 * 100% = 66.6667% */
       }
     </style>
+
+      <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
   </head>
   <body class="bg-white text-gray-800">
     <!-- Navigasi Header -->
@@ -817,8 +821,27 @@
         });
       });
     </script>
+
+      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      const swiper = new Swiper('.swiper', {
+        loop: true,
+        pagination: {
+          el: '.swiper-pagination',
+        },
+        // Pastikan bagian ini ada!
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    </script>
+
+
+      
   </body>
 </html>
+
 
 
 
