@@ -59,6 +59,12 @@
         opacity: 1;
       }
     </style>
+
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+    
   </head>
   <body class="bg-white text-gray-800">
     <!-- Navigasi Header -->
@@ -202,31 +208,44 @@
 
     <!-- Hero Section -->
     <header class="relative bg-gray-100">
-      <!-- Gambar Banner -->
-      <div class="w-full h-[h-full] md:h-[500px] bg-gray-300">
-        <img
-          src="banner/sec.png"
-          alt="SAG General Cleaning"
-          class="w-full h-full object-center"
-        />
-      </div>
+      <div class="swiper w-full h-full md:h-[1000px]">
+  <div class="swiper-wrapper">
+    
+    <div class="swiper-slide">
+      <img
+        src="SAG.png"
+        alt="SAG General Cleaning 1"
+        class="w-full h-full object-cover"
+      />
+    </div>
 
-      <!-- Konten Teks Hero -->
-      <div
-        class="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-center items-start p-4 md:p-16 lg:p-24"
-      ></div>
+    <div class="swiper-slide">
+      <img
+        src="./banner/kontak.png"
+        alt="Layanan Kami"
+        class="w-full h-full object-cover"
+      />
+    </div>
 
-      <!-- Dots Carousel -->
-      <div
-        class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2"
-        id="carousel-dots"
-      >
-        <button class="carousel-dot active" data-slide="0"></button>
-        <button class="carousel-dot" data-slide="1"></button>
-        <button class="carousel-dot" data-slide="2"></button>
-        <button class="carousel-dot" data-slide="3"></button>
-      </div>
-    </header>
+    <div class="swiper-slide">
+      <img
+        src="./banner/gallery.png"
+        alt="Promo Spesial"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+  </div>
+
+  <div class="swiper-button-prev text-white"></div>
+  <div class="swiper-button-next text-white"></div>
+
+  <div class="swiper-pagination"></div>
+</div>
+
+
+      
+      </header>
 
     <!-- Main Content -->
     <main>
@@ -244,13 +263,13 @@
                 Satpam adalah satuan pengamanan yang bertugas menjaga keamanan
                 dan keselamatan di berbagai jenis lingkungan, seperti gedung
                 perkantoran, pusat perbelanjaan, apartemen, pabrik, atau area
-                publik lainnya. Satpam Bilss bertanggung jawab untuk melindungi
+                publik lainnya. Satpam SAGs bertanggung jawab untuk melindungi
                 properti, orang-orang, dan aset yang ada di area yang mereka
-                jaga. Kualitas yang dimiliki satpam Bilss adalah keberanian,
+                jaga. Kualitas yang dimiliki satpam SAGs adalah keberanian,
                 kepatuhan terhadap aturan dan prosedur keamanan, kecakapan
                 fisik, dan kemampuan untuk menghadapi situasi yang mungkin
                 memerlukan penyelesaian konflik atau penanganan orang yang tidak
-                mengikuti peraturan, karena seluruh anggota satpam Bilss telah
+                mengikuti peraturan, karena seluruh anggota satpam SAGs telah
                 mengikuti pendidikan resmi dari Polri dengan kualifikasi minimum
                 Gada Pratama
               </p>
@@ -269,15 +288,15 @@
           >
             <div class="md:order-2 order-2 mt-8">
               <p class="text-2xl text-gray-600 md:text-left text-center">
-                Satpam Bilss memiliki kemampuan komunikasi yang mumpuni, baik
+                Satpam SAGs memiliki kemampuan komunikasi yang mumpuni, baik
                 dalam berinteraksi dengan pengunjung atau penghuni area yang
                 mereka jaga maupun dengan rekan kerja dan petugas keamanan
-                lainnya. Satpam Bilss dapat memberikan instruksi yang jelas dan
+                lainnya. Satpam SAGs dapat memberikan instruksi yang jelas dan
                 menjaga komunikasi yang efektif dalam situasi darurat atau
                 keadaan yang membutuhkan respons cepat. Sebagai penjaga
-                keamanan, satpam Bilss memiliki peran penting dalam menciptakan
+                keamanan, satpam SAGs memiliki peran penting dalam menciptakan
                 lingkungan yang aman dan nyaman bagi orang-orang yang berada di
-                area yang mereka jaga. Dalam pengawasan, satpam Bilss membantu
+                area yang mereka jaga. Dalam pengawasan, satpam SAGs membantu
                 mencegah tindakan kriminal, kebakaran, atau gangguan lainnya
                 yang dapat mengancam keamanan dan kenyamanan.
               </p>
@@ -458,7 +477,7 @@
         </div>
       </section>
 
-      <!-- Kenapa Memilih Bilss? Section -->
+      <!-- Kenapa Memilih SAGs? Section -->
       <section class="py-16 lg:py-24 bg-blue-700 text-white">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center mb-12">
@@ -845,6 +864,23 @@
         });
       });
     </script>
+
+   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      const swiper = new Swiper('.swiper', {
+        loop: true,
+        pagination: {
+          el: '.swiper-pagination',
+        },
+        // Pastikan bagian ini ada!
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    </script>
+    
   </body>
 </html>
+
 
